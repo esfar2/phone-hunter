@@ -1,73 +1,64 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Phone Hunter</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hunting Phone API</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.2/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
     <header>
-        <h1>Welcome to my Phone Hunter!</h1>
+        <h2 class="text-6xl">Hunting Phone</h2>
     </header>
-    <main class="container">
-        <section>
-            <div class="mb-3 w-50">
-                <input id="search-field" type="email" class="form-control" id="exampleFormControlInput1"
-                    placeholder="search your phone">
-                <div id="btn-search" class="btn btn-primary">Search</div>
-            </div>
-        </section>
-        <!-- display Search Result -->
-        <section>
-            <div id="phones-container" class="row row-cols-1 row-cols-md-3 g-4">
+    <main class="container mx-auto mt-8">
 
-            </div>
-            <div id="no-found-message" class="mt-4 d-none">
-                <h3 class="text-warning">No Phone Found. Please try a new search</h3>
-            </div>
-            <div id="show-all" class="text-center d-none">
-                <div id="btn-show-all" class="btn btn-primary">Show All</div>
-            </div>
+        <section class="bg-gray-100 p-4 m-4">
+            <input id="search-field" type="text" placeholder="search..." class="input input-bordered w-full max-w-xs" />
+            <button onclick="handleSearch()" class="btn btn-accent">Search</button>
+            <!-- another search field -->
+            <!-- <input type="text" id="search-field2" placeholder="Search here" class="input input-bordered w-full max-w-xs" />
+            <button onclick="handleSearch2()" class="btn btn-active btn-primary">Search</button> -->
+
         </section>
-        <!-- loader -->
-        <section id="loader" class="d-none">
-            <div style="height: 400px;" class="d-flex justify-content-center align-items-center">
-                <div class="spinner-border  text-success" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-            </div>
-        </section>
-        <!-- modal contents -->
+
+
+        <!-- search result -->
         <section>
-            
-            <!-- Modal -->
-            <div class="modal fade" id="phoneDetailModal" tabindex="-1" aria-labelledby="phoneDetailModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="phoneDetailModalLabel"></h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div id="phone-details" class="modal-body">
-                            
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
+            <!-- spinner or loader -->
+            <div id="loading-spinner" class="text-center my-40 hidden">
+                <span class="loading loading-spinner text-primary loading-lg"></span>
+            </div>
+            <div id="phone-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            </div>
+            <!-- show all button -->
+            <div id="show-all-container" class="hidden text-center my-8">
+                <button onclick="handleShowAll()" class="btn btn-accent">Show All</button>
             </div>
         </section>
+
+        <!-- Show Details modal -->
+        <!-- Open the modal using ID.showModal() method -->
+        <dialog id="show_details_modal" class="modal modal-bottom sm:modal-middle">
+            <form method="dialog" class="modal-box">
+                <h3 id="show-detail-phone-name" class="font-bold text-3xl"></h3>
+                <div id="show-detail-container">
+
+                </div>
+                <div class="modal-action">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn">Close</button>
+                </div>
+            </form>
+        </dialog>
+
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-        crossorigin="anonymous"></script>
-    <script src="js/app.js"></script>
+    <footer>
+
+    </footer>
+    <script src="js/phone.js"></script>
 </body>
 
 </html>
